@@ -1,11 +1,11 @@
 import React from 'react';
 
-const MainLay = () => {
+const Login = () => {
     return (
         <div>
-
+          
         </div>
     );
 };
 
-export default MainLay;
+export default Login;

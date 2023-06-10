@@ -6,11 +6,12 @@ import useToast from '../../Hooks/useToast';
 import placeImage from '../../assets/upload.png'
 
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import Social from '../../Components/Social';
 //Main function 
 const SignUp = () => {
+    const navigate = useNavigate()
     const { createAccount } = useAuth()
     const [show, setShow] = useState(false)
     const [img, setImg] = useState()
@@ -55,17 +56,24 @@ const SignUp = () => {
             const api = import.meta.env.VITE_imgbbApiKey
             if (data.image[0]) {
 
-                await fetch(`https://api.imgbb.com/1/upload?key=${api}`, { method: 'POST', body: formData }).then(res => res.json()).then(data => {
-                    console.log(data.data.display_url)
-                    if (data.data.display_url) {
+                await fetch(`https://api.imgbb.com/1/upload?key=${api}`, { method: 'POST', body: formData }).then(res => res.json()).then(imgData => {
+                    console.log(imgData.data.display_url)
+
+                    if (imgData.data.display_url) {
+                        console.log(data);
                         createAccount(data.email, data.password)
                             .then(data => {
                                 console.log(data);
+
+                                navigate('/login')
                                 Toast.fire({
                                     icon: 'success',
-                                    title: 'Registered successfully'
+                                    title: 'Registered successfully  Please Login Now'
                                 })
-                            }).catch(err => console.log(err)
+                            }).catch(err => Toast.fire({
+                                icon: 'error',
+                                title: err.message
+                            })
                             )
                     }
 

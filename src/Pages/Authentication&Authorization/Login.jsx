@@ -5,11 +5,31 @@ import Social from '../../Components/Social';
 import { Link } from 'react-router-dom';
 import Lottie from "lottie-react";
 import registerAnimation from '../../../public/register.json'
+import useAuth from '../../Hooks/useAuth';
+import useToast from '../../Hooks/useToast';
 const Login = () => {
+    const { loginWithEmail } = useAuth()
+    const [Toast] = useToast()
     const [show, setShow] = useState(false)
     const { register, handleSubmit } = useForm();
     const onSubmit = async (data) => {
         console.log(data);
+        if (data.email) {
+            loginWithEmail(data.email, data.password).then(data => {
+                console.log(data)
+                Toast.fire({
+                    icon: 'success',
+                    title: ' Login Successfully'
+                })
+
+            }).catch(err => {
+                Toast.fire({
+                    icon: 'error',
+                    title: err.message
+                })
+
+            })
+        }
     }
 
     return (
@@ -51,7 +71,7 @@ const Login = () => {
 
 
                     {/* Submit */}
-                    <input className='btn rounded-full text-white hover:text-[#f55400] border bg-[#f55400]   font-semibold w-[70%] md:w-[60%]' type="submit" value='Register' />
+                    <input className='btn rounded-full text-white hover:text-[#f55400] border bg-[#f55400]   font-semibold w-[70%] md:w-[60%]' type="submit" value='Login' />
                 </form>
 
                 <p className='my-4'>If you are new here?please <Link to={'/registration'} className="text-[#f55400]">Register</Link> or Login With</p>

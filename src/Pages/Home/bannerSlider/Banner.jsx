@@ -36,10 +36,10 @@ const Banner = () => {
                 navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
 
-                className="MyContainer"
+                className="MyContainer h-full w-full text-sm bg-[#eeeeee11]"
             >
                 <SwiperSlide>
-                    <div className='flex flex-col-reverse md:flex-row items-center justify center md:mt-10  '>
+                    <div className='flex  flex-col-reverse md:flex-row items-center justify center md:mt-10  '>
                         <div className='flex flex-col items-center md:items-start  max-w-md w-[90%] mx-auto'>
                             <SliderText title={'Study Languages Having Fun! '} subTitle={`We Have The International Reputation for Hign  Quality Teaching And Success`} />
 
@@ -65,14 +65,14 @@ const Banner = () => {
                         </div>
                         <div>
                             <div className="h-[500px] w-full">
-                                {/* Language lerning animation */}
+                                {/* Language learning animation */}
                                 <Lottie className='h-full w-full ' animationData={TrAnimation} loop={true} />
                                 <div className='border-b-2 border-gray-600 w-full -mt-[6px]  hidden xl:block'></div>
                             </div>
                         </div>
                     </div>
                 </SwiperSlide>
-                <SwiperSlide>
+                <SwiperSlide >
                     <div className='md:mt-10  flex flex-col-reverse md:flex-row justify-center items-center '>
                         <div className='flex flex-col items-center md:items-start  max-w-md w-[90%] mx-auto'>
                             <SliderText title={'Classes Now Forming!'} subTitle={`Our Courses Are Taught at Beginner to Advanced Lavels on a Uear Round Basis`} />
@@ -82,7 +82,7 @@ const Banner = () => {
                         </div>
                         <div>
                             <div className="h-[500px] w-full">
-                                {/* Language lerning animation */}
+                                {/* Language learning animation */}
                                 <Lottie className='h-full w-full' animationData={languageLearning} loop={true} />
                             </div>
                         </div>

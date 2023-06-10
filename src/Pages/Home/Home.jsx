@@ -18,11 +18,18 @@ const Home = () => {
                     <Lottie className='h-full' animationData={mouse} loop={true} />
                 </a>
             </div>
-            <div id='popularClass' className='mt-40'><PopularClasses />
+            <div data-aos="fade-down"
+                data-aos-duration="1000"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                data-aos-easing="ease-in-out"
+                id='popularClass' className='mt-40'><PopularClasses />
             </div>
 
             <div data-aos="fade-up"
                 data-aos-duration="1000"
+                data-aos-mirror="true"
+                data-aos-once="false"
                 data-aos-easing="ease-in-out"
                 className='my-[130px] MyContainer'>
                 <PopularInstructor />

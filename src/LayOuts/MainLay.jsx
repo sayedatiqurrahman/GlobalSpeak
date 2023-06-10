@@ -14,9 +14,13 @@ const MainLay = () => {
     AOS.init();
     return (
         <div>
-            <NavBar />
+            <div data-aos='fade-down'>
+                <NavBar />
+            </div>
             <Outlet />
-            <Footer />
+            <div data-aos='fade-left'>
+                <Footer />
+            </div>
         </div>
     );
 };

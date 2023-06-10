@@ -1,11 +1,15 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { HiOutlineMenuAlt3 } from 'react-icons/Hi';
+import useAuth from '../Hooks/useAuth';
 const NavBar = () => {
-
-    // TODO: user
-    const user = true;
-
+    const navigate = useNavigate()
+    const { user, logOut } = useAuth()
+   
+    const handleLogOut = () => {
+        logOut()
+        navigate('/login')
+    }
     // Menu items
     const menuItems = <>
         <li><NavLink className={({ isActive }) => isActive ? 'active' : 'default'} to={'/'}>Home</NavLink></li>
@@ -42,15 +46,15 @@ const NavBar = () => {
                 </div>
                 <div className="navbar-end ">
                     {user ?
-                        <div className="dropdown dropdown-end">
+                        <div title={user?.displayName} className=" dropdown dropdown-end" >
                             <label tabIndex={0} className="btn px-2 rounded-full ">
                                 <div className="flex bg-gray-300 px-2 text-gray-400 items-center rounded-full">
                                     <div><HiOutlineMenuAlt3 size={16} /></div>
 
-                                    <img className=' relative -right-2 border border-amber-500 avatar w-10 h-10 rounded-full bg-gray-300' src={user?.imageUrl || 'https://i.ibb.co/KKp20Zc/1623060744486.jpg'} alt='Profile Picture' />
+                                    <img className='relative -right-2 border border-amber-500 avatar w-10 h-10 rounded-full bg-gray-300' src={user?.photoURL || 'https://i.ibb.co/KKp20Zc/1623060744486.jpg'} alt='Profile Picture' />
                                 </div>
                             </label>
-                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                            <ul tabIndex={0} className="z-10 menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                                 <li>
                                     <NavLink to={'/dashboard'}
                                         className={({ isActive }) => isActive ? 'active justify-between' : 'justify-between'}>
@@ -59,7 +63,7 @@ const NavBar = () => {
                                     </NavLink>
                                 </li>
                                 <li><NavLink className={({ isActive }) => isActive ? 'active' : ''} to={'/login'}>Login</NavLink></li>
-                                <li><Link >Logout</Link></li>
+                                <li onClick={handleLogOut}><Link >Logout</Link></li>
                             </ul>
                         </div> :
                         <ul className='menu menu-sm '>

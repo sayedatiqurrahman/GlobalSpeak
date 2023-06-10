@@ -6,6 +6,8 @@ import Home from '../Pages/Home/Home';
 import Login from '../Pages/Authentication&Authorization/Login';
 import SignUp from '../Pages/Authentication&Authorization/SignUp';
 import Dashboard from '../LayOuts/Dashboard';
+import Loading from '../Components/Loading';
+import AllClasses from '../Pages/AllClasses/AllClasses';
 
 const router = createBrowserRouter([
     {
@@ -15,6 +17,10 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />
+            },
+            {
+                path: '/allClasses',
+                element: <AllClasses />
             },
             {
                 path: '/login',
@@ -29,6 +35,9 @@ const router = createBrowserRouter([
     }, {
         path: '/dashboard',
         element: <Dashboard />
+    }, {
+        path: 'loading',
+        element: <Loading />
     }
 ])
 

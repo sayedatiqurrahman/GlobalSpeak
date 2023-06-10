@@ -1,13 +1,26 @@
 import React from 'react';
 import useAuth from '../Hooks/useAuth';
-
+import { FaGoogle } from 'react-icons/fa';
+import useToast from '../Hooks/useToast';
+import { useNavigate } from 'react-router-dom';
 const Social = () => {
-    const auth = useAuth()
+    const [Toast] = useToast()
+    const navigate = useNavigate()
+    const { googleLogin } = useAuth()
+    const handleGoogleLogin = () => {
+        googleLogin().then(res => {
+            Toast.fire({
+                icon: 'success',
+                title: 'Login Successfully'
+            })
+            navigate('/')
+        }).catch(err => console.log(err))
+    }
     return (
         <div>
-            <p className='mt-px'>If you have already an account?please <Link to={'/login'} className="text-[#f55400]">Login</Link> or Login With</p>
 
-            <button className='btn rounded-full w-[70%] md:w-[55%] text-white bg-[#f55400]'><FaGoogle /></button>
+
+            <button onClick={handleGoogleLogin} className='btn rounded-full w-[70%] md:w-[55%] text-white bg-[#f55400]'><FaGoogle /></button>
         </div>
     );
 };

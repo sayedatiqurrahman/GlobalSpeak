@@ -45,11 +45,11 @@ const Testimonial = () => {
                 className="mySwiper shadow-2xl border-x-2  border-[#f55400]"
             >
                 {
-                    testData.map(test => <SwiperSlide key={test._id}
-                        className="bg-gray-200 shadow-2xl border-2 border-[#f55400] py-3 px-2 rounded-lg "
+                    testData.map(test => <SwiperSlide style={{ height: '350px' }} key={test._id}
+                        className="bg-gray-200 shadow-2xl border-2 border-[#f55400] py-3 px-2 rounded-lg group h-[300px]"
                     >
-                        <div className="h-32 w-32">
-                            <img className="h-full w-full rounded-full border-2 border-[#f55400]" src={test.image} alt="" />
+                        <div className="h-32 w-32 rounded-full relative overflow-hidden border-2 border-[#f55400]">
+                            <img className="h-full transition-all duration-200 w-full rounded-full  group-hover:scale-150" src={test.image} alt="" />
                         </div>
 
                         <h1 className="text-xl mt-4 font-semibold fontB">{test.name}</h1>

@@ -9,10 +9,11 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import Social from '../../Components/Social';
+import { updateProfile } from 'firebase/auth';
 //Main function 
 const SignUp = () => {
     const navigate = useNavigate()
-    const { createAccount } = useAuth()
+    const { auth, createAccount } = useAuth()
     const [show, setShow] = useState(false)
     const [img, setImg] = useState()
     const [Toast] = useToast()
@@ -62,14 +63,26 @@ const SignUp = () => {
                     if (imgData.data.display_url) {
                         console.log(data);
                         createAccount(data.email, data.password)
-                            .then(data => {
-                                console.log(data);
+                            .then(() => {
+                                console.log(data.displayName);
 
-                                navigate('/login')
-                                Toast.fire({
-                                    icon: 'success',
-                                    title: 'Registered successfully  Please Login Now'
-                                })
+                                updateProfile(auth.currentUser, {
+                                    displayName: data.name,
+                                    photoURL: imgData.data.display_url
+                                }).then((data) => {
+                                    console.log('inside', data);
+                                    navigate('/login')
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: 'Registered successfully  Please Login Now if you are not logged in automatically '
+                                    })
+                                }).catch((error) => {
+                                    Toast.fire({
+                                        icon: 'error',
+                                        title: error.message
+                                    })
+                                });
+
                             }).catch(err => Toast.fire({
                                 icon: 'error',
                                 title: err.message

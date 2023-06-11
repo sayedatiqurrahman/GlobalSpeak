@@ -6,12 +6,13 @@ import mouse from '../../../public/mouse.json'
 import PopularInstructor from './PopularInstructor/PopularInstructor';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+import Testimonial from './Testimonial/Testimonial';
 
 const Home = () => {
 
     AOS.init();
     return (
-        <div>
+        <>
             <Banner />
             <div className='h-28 mt-5'>
                 <a href="#popularClass">
@@ -34,7 +35,18 @@ const Home = () => {
                 className='my-[130px] MyContainer'>
                 <PopularInstructor />
             </div>
-        </div>
+
+            <div data-aos="fade-right"
+                data-aos-duration="1000"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                data-aos-easing="ease-in-out"
+                className='my-[130px] MyContainer'
+            >
+                <Testimonial />
+            </div>
+
+        </>
     );
 };
 

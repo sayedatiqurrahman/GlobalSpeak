@@ -8,11 +8,15 @@ import SignUp from '../Pages/Authentication&Authorization/SignUp';
 import Dashboard from '../LayOuts/Dashboard';
 import Loading from '../Components/Loading';
 import AllClasses from '../Pages/AllClasses/AllClasses';
+import AllInstructors from '../Pages/AllInstructors/AllInstructors';
+import Classes from '../Pages/Classes/Classes';
+import Errorpage from '../Pages/ErrorPage/Errorpage';
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <MainLay />,
+        errorElement: <Errorpage />,
         children: [
             {
                 path: '/',
@@ -21,6 +25,14 @@ const router = createBrowserRouter([
             {
                 path: '/allClasses',
                 element: <AllClasses />
+            },
+            {
+                path: '/instructors',
+                element: <AllInstructors />
+            },
+            {
+                path: '/classes',
+                element: <Classes />
             },
             {
                 path: '/login',
@@ -34,7 +46,8 @@ const router = createBrowserRouter([
         ]
     }, {
         path: '/dashboard',
-        element: <Dashboard />
+        element: <Dashboard />,
+        errorElement: <Errorpage />
     }, {
         path: 'loading',
         element: <Loading />

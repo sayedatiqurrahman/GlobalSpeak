@@ -21,7 +21,7 @@ const PopularClasses = () => {
 
             <div className='my-[130px]  grid md:grid-cols-2  lg:grid-cols-3 gap-5 MyContainer'>
                 {
-                    data?.map(pClass => <ClassCard pClass={pClass} />)
+                    data?.map(pClass => <ClassCard key={pClass._id} pClass={pClass} />)
                 }
             </div>
 

@@ -23,7 +23,7 @@ const PopularInstructor = () => {
 
             <div className=' mt-24 grid md:grid-cols-2  lg:grid-cols-3 gap-5 MyContainer'>
                 {
-                    data?.map(pInstructor => <PopInstructorCard pInstructor={pInstructor} />)
+                    data?.map(pInstructor => <PopInstructorCard key={pInstructor._id} pInstructor={pInstructor} />)
                 }
             </div>
 

@@ -19,9 +19,9 @@ const AuthProvider = ({ children }) => {
 
     // login with email and password
     const loginWithEmail = (email, password) => {
-       return signInWithEmailAndPassword(auth, email, password)
+        return signInWithEmailAndPassword(auth, email, password)
     }
-    
+
     const googleLogin = () => {
 
         return signInWithPopup(auth, provider)
@@ -46,7 +46,9 @@ const AuthProvider = ({ children }) => {
     }, []);
     const allInfo = {
         user,
+        auth,
         loading,
+        setLoading,
         createAccount,
         googleLogin,
         loginWithEmail,

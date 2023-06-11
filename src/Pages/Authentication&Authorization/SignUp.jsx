@@ -69,13 +69,30 @@ const SignUp = () => {
                                 updateProfile(auth.currentUser, {
                                     displayName: data.name,
                                     photoURL: imgData.data.display_url
-                                }).then((data) => {
-                                    console.log('inside', data);
-                                    navigate('/login')
-                                    Toast.fire({
-                                        icon: 'success',
-                                        title: 'Registered successfully  Please Login Now if you are not logged in automatically '
+                                }).then(() => {
+                                    const user = {
+                                        name: data.name,
+                                        email: data.email,
+                                        role: data?.role || 'Student'
+                                    }
+                                    fetch('http://localhost:5000/user', {
+                                        method: "POST",
+                                        headers: { "Content-Type": "application/json" },
+                                        body: JSON.stringify(user)
+                                    }).then(res => res.json()).then(uData => {
+                                        console.log(uData);
+                                        navigate('/login')
+                                        Toast.fire({
+                                            icon: 'success',
+                                            title: 'Registered successfully  Please Login Now if you are not logged in automatically '
+                                        })
+                                    }).catch(err => {
+                                        Toast.fire({
+                                            icon: 'error',
+                                            title: err.message
+                                        })
                                     })
+
                                 }).catch((error) => {
                                     Toast.fire({
                                         icon: 'error',
@@ -113,30 +130,39 @@ const SignUp = () => {
             <div data-aos="fade-right" className='md:w-1/2 w-full text-center '>
                 <form className='bg-base-100 rounded p-4 shadow' onSubmit={handleSubmit(onSubmit)}>
                     {/* register your input into the hook by invoking the "register" function */}
-                    <div className=" form-control rounded-full w-full " >
+                    <div className=" form-control rounded-full -mt-2 w-full " >
                         <div className='tooltip tooltip-open tooltip-left' data-tip="Upload Your Image">
-                            <img title='Upload Your Image' className={img ? ' cursor-pointer mx-auto h-28 w-28 rounded-full border border-[#f55400] mb-2 ' : 'cursor-pointer mx-auto h-28 w-28 mb-2'} src={img || placeImage} alt="" />
+                            <img title='Upload Your Image' className={img ? ' cursor-pointer mx-auto h-28 w-28 rounded-full -mt-2 border border-[#f55400] mb-2 ' : 'cursor-pointer mx-auto h-28 w-28 mb-2'} src={img || placeImage} alt="" />
                         </div>
                         {/* <label className="label ">
                             <span className="label-text font-semibold ml-2">Your image*</span>
                         </label> */}
 
 
-                        <input type="file" className=" file-input file-input-bordered w-full border-[#f55400] rounded-full" accept='image/*'   {...register("image")} onChange={handleImageChange} required />
+                        <div className='flex gap-3 flex-col lg:flex-row'>
+                            <input type="file" className=" file-input file-input-bordered w-full border-[#f55400] rounded-full -mt-2" accept='image/*'   {...register("image")} onChange={handleImageChange} required />
+
+                            <select required {...register("role", { required: true })} className="select select-bordered border-[#f55400] rounded-full -mt-2 w-full lg:w-1/2 "
+                                defaultValue={"Student"}
+                            >
+                                <option>Student</option>
+                                <option>Teacher</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div className="form-control w-full ">
                         <label className="label">
                             <span className="label-text font-semibold ml-2">Your Full Name*</span>
                         </label>
-                        <input {...register("name")} type="text" placeholder="Enter your Name" className="input rounded-full border-[#f55400] input-bordered w-full" required />
+                        <input {...register("name")} type="text" placeholder="Enter your Name" className="input -mt-2 rounded-full  border-[#f55400] input-bordered w-full" required />
                     </div>
 
                     <div className="form-control mb-2 w-full">
                         <label className="label">
                             <span className="label-text font-semibold ml-2">Your Email*</span>
                         </label>
-                        <input {...register("email")} type="text" placeholder="Enter your Email" className="input input-bordered rounded-full  border-[#f55400]  w-full" required />
+                        <input {...register("email")} type="text" placeholder="Enter your Email" className="input input-bordered rounded-full -mt-2  border-[#f55400]  w-full" required />
                     </div>
 
                     {/* Password */}
@@ -146,8 +172,8 @@ const SignUp = () => {
                             <span className="label-text font-semibold ml-2">Password*</span>
                         </label>
                         <div className='relative'>
-                            <input {...register("password")} type={show ? "text" : "password"} placeholder="Enter Your Password" className="input input-bordered rounded-full  border-[#f55400]  w-full" required />
-                            <p onClick={() => setShow(!show)} className='rounded-full hover:bg-slate-300 p-[15px] absolute right-px top-1/2 -translate-y-1/2'>{
+                            <input {...register("password")} type={show ? "text" : "password"} placeholder="Enter Your Password" className="input input-bordered rounded-full -mt-2  border-[#f55400]  w-full" required />
+                            <p onClick={() => setShow(!show)} className='rounded-full -mt-2 hover:bg-slate-300 p-[15px] absolute right-px top-1/2 -translate-y-1/2'>{
                                 show ? <FaEyeSlash /> : <FaEye />
                             }</p>
                         </div>
@@ -158,15 +184,15 @@ const SignUp = () => {
                             <span className="label-text font-semibold ml-2">Confirm Password*</span>
                         </label>
                         <div className='relative'>
-                            <input {...register("ConfirmPassword")} type={show ? "text" : "password"} placeholder="Enter Confirm Password" className="input input-bordered rounded-full  border-[#f55400]  w-full" required />
-                            <p onClick={() => setShow(!show)} className='rounded-full hover:bg-slate-300 p-[15px] absolute right-px top-1/2 -translate-y-1/2'>{
+                            <input {...register("ConfirmPassword")} type={show ? "text" : "password"} placeholder="Enter Confirm Password" className="input input-bordered rounded-full -mt-2  border-[#f55400]  w-full" required />
+                            <p onClick={() => setShow(!show)} className='rounded-full -mt-2 hover:bg-slate-300 p-[15px] absolute right-px top-1/2 -translate-y-1/2'>{
                                 show ? <FaEyeSlash /> : <FaEye />
                             }</p>
                         </div>
                     </div>
 
                     {/* Submit */}
-                    <input className='btn rounded-full text-white hover:text-[#f55400] border bg-[#f55400]   font-semibold w-[70%] md:w-[60%]' type="submit" value='Register' />
+                    <input className='btn rounded-full  text-white hover:text-[#f55400] border bg-[#f55400]   font-semibold w-[70%] md:w-[60%]' type="submit" value='Register' />
                 </form>
 
                 <p className='my-2'>If you have already an account?please <Link to={'/login'} className="text-[#f55400]">Login</Link> or Login With</p>

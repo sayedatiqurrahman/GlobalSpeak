@@ -16,7 +16,7 @@ const NavBar = () => {
         <li><NavLink className={({ isActive }) => isActive ? 'active' : 'default'} to={'/instructors'}>Instructors</NavLink></li>
         <li><NavLink className={({ isActive }) => isActive ? 'active' : 'default'} to={'/classes'}>Classes</NavLink></li>
         {
-            user && <li><NavLink className={({ isActive }) => isActive ? 'active' : 'default'} to={'/dashboard'}>Dashboard</NavLink></li>
+            user && <li><NavLink className={({ isActive }) => isActive ? 'active' : 'default'} to={'/dashboard/home'}>Dashboard</NavLink></li>
         }
     </>
     return (
@@ -56,7 +56,7 @@ const NavBar = () => {
                             </label>
                             <ul tabIndex={0} className="z-10 menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                                 <li>
-                                    <NavLink to={'/dashboard'}
+                                    <NavLink to={'/dashboard/home'}
                                         className={({ isActive }) => isActive ? 'active justify-between' : 'justify-between'}>
                                         Dashboard
                                         <span className="badge">New</span>

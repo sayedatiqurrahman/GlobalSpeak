@@ -3,7 +3,7 @@ import React from 'react';
 const PopInstructorCard = ({ pInstructor }) => {
 
 
-    const { numberOfStudents, courseEnrollDeadline, foreignLanguageName, teacherName, teacherImage, email } = pInstructor
+    const { numberOfStudents, courseEnrollDeadline, foreignLanguageName, teacherName, teacherImage, email,availableSeat } = pInstructor
     return (
         <div>
 
@@ -18,6 +18,7 @@ const PopInstructorCard = ({ pInstructor }) => {
                         <p><b>Email:</b> {email}</p>
                         <div className="card-actions justify-end">
                             <div className="badge outline outline-1 outline-[#f55400]">Deadline: {courseEnrollDeadline}</div>
+                            <div className="badge outline outline-1 outline-[#f55400]">Available Seats: {availableSeat}</div>
 
                         </div>
                     </div>

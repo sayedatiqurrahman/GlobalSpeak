@@ -9,11 +9,17 @@ const Social = () => {
     const { googleLogin } = useAuth()
     const handleGoogleLogin = () => {
         googleLogin().then(res => {
-            Toast.fire({
-                icon: 'success',
-                title: 'Login Successfully'
+            console.log(res);
+            const user = {
+                name: res.user.displayName,
+                email: res.user.email,
+                role: 'Student'
+            }
+            fetch('http://localhost:5000/user', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(user)
             })
-            navigate('/')
         }).catch(err => console.log(err))
     }
     return (

@@ -21,7 +21,7 @@ const PopularInstructor = () => {
         <div  className='mt-40 mb-[130px]'>
             <SectionTItle title={'Popular Instructors'} subTitle={'Behind the Success: Unveiling the Popular Instructors'} />
 
-            <div className=' mt-24 grid md:grid-cols-2  lg:grid-cols-3 gap-5 MyContainer'>
+            <div className=' mt-24 grid md:grid-cols-2  lg:grid-cols-3 gap-10 MyContainer'>
                 {
                     data?.map(pInstructor => <PopInstructorCard key={pInstructor._id} pInstructor={pInstructor} />)
                 }

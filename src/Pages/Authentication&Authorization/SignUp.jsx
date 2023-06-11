@@ -146,7 +146,7 @@ const SignUp = () => {
                                 defaultValue={"Student"}
                             >
                                 <option>Student</option>
-                                <option>Teacher</option>
+                                <option>Instructor</option>
                             </select>
                         </div>
                     </div>

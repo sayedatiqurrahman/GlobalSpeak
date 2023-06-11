@@ -5,7 +5,7 @@ import useAuth from '../Hooks/useAuth';
 const NavBar = () => {
     const navigate = useNavigate()
     const { user, logOut } = useAuth()
-   
+
     const handleLogOut = () => {
         logOut()
         navigate('/login')
@@ -62,7 +62,11 @@ const NavBar = () => {
                                         <span className="badge">New</span>
                                     </NavLink>
                                 </li>
+
                                 <li><NavLink className={({ isActive }) => isActive ? 'active' : ''} to={'/login'}>Login</NavLink></li>
+
+                                <li><NavLink className={({ isActive }) => isActive ? 'active' : ''} to={'/registration'}>Sign up</NavLink></li>
+
                                 <li onClick={handleLogOut}><Link >Logout</Link></li>
                             </ul>
                         </div> :

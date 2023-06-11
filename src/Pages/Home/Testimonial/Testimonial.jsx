@@ -42,7 +42,7 @@ const Testimonial = () => {
                     }
                 }}
                 modules={[Pagination]}
-                className="mySwiper shadow-2xl border-x-2  border-[#f55400]"
+                className="mySwiper shadow-2xl md:border-x-2  border-[#f55400]"
             >
                 {
                     testData.map(test => <SwiperSlide style={{ height: '350px' }} key={test._id}

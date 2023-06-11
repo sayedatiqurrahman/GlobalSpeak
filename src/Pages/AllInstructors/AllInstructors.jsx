@@ -12,7 +12,7 @@ const AllInstructors = () => {
             <div className='my-28'>
                 <SectionTItle title={'All Instructors'} subTitle={'Guiding Knowledge, Inspiring Minds: The World of'} />
             </div>
-            <div className="MyContainer grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="MyContainer grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {
                     instructors?.map(pInstructor => <PopInstructorCard key={pInstructor._id} pInstructor={pInstructor} />)
                 }

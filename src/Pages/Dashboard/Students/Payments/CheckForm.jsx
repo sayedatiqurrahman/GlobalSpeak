@@ -21,12 +21,7 @@ const CheckForm = () => {
 
 
     const totalPrice = cart?.reduce((sum, item) => item.price + sum, 0);
-    if (totalPrice <= 0) {
-        Toast.fire({
-            icon: 'error',
-            title: "Please select your course first either you cant pay"
-        })
-    }
+
     useEffect(() => {
         if (totalPrice > 0) {
             axiosSecure.post('/create-payment-intent', { price: totalPrice })
@@ -34,6 +29,12 @@ const CheckForm = () => {
                     setClientSecret(res.data.clientSecret)
 
                 })
+        }
+        if (totalPrice <= 0) {
+            Toast.fire({
+                icon: 'error',
+                title: "Make sure you have selected your course"
+            })
         }
     }, [totalPrice, cart])
     console.log(clientSecret);
@@ -109,6 +110,7 @@ const CheckForm = () => {
             setProcessing(false)
         }
     }
+
     return (
         <form onSubmit={handleSubmit} className='w-full md:w-[60%] mx-auto'>
             <CardElement className='bg-base-100 p-5 rounded-2xl shadow-2xl'

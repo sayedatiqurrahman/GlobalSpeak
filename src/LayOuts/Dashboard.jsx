@@ -4,7 +4,7 @@ import { GiClassicalKnowledge } from 'react-icons/gi';
 import { BiLogOut, BiSelectMultiple } from 'react-icons/bi';
 
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 
 const Dashboard = () => {
@@ -16,6 +16,7 @@ const Dashboard = () => {
             <div className="drawer-content flex flex-col justify-center text-left">
                 {/* Page content here */}
                 <label htmlFor="my-drawer-2" className="btn drawer-button lg:hidden btn-circle bg-transparent text-[#f55400]  border-2 border-[#f55400] m-2 "><FaBars /></label>
+                <Outlet />
 
             </div>
             <div className="drawer-side">

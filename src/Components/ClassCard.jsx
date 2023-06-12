@@ -2,8 +2,10 @@
 import useAuth from '../Hooks/useAuth';
 import useUserRole from '../Hooks/useUserRole';
 import useToast from '../Hooks/useToast';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
 
 const ClassCard = ({ pClass, classes }) => {
+    const [axiosSecure] = useAxiosSecure()
     let disabled = false;
     const { user } = useAuth()
     const [Toast] = useToast()
@@ -27,10 +29,27 @@ const ClassCard = ({ pClass, classes }) => {
             })
             return
         } else {
+            const StudentEmail = user.email
             const bookedData = {
-                bookedClass: id, foreignLanguageName, price, languageImage, teacherName
+                bookedClass: id, foreignLanguageName, price, languageImage, teacherName,
+                StudentEmail
             }
-            fetch()
+            axiosSecure.post('/mySelectedClass', bookedData).then(data => {
+                console.log(data.data);
+                if (data.data.error) {
+                    Toast.fire({
+                        icon: "error",
+                        title: data.data.message
+                    })
+                } else {
+                    Toast.fire({
+                        icon: "success",
+                        title: "Booked this course successfully"
+                    })
+                }
+
+
+            })
         }
 
     }

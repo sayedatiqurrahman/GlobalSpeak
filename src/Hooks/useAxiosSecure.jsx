@@ -11,7 +11,7 @@ const useAxiosSecure = () => {
     const navigate = useNavigate();
 
     const axiosSecure = axios.create({
-        baseURL: 'https://bistro-boss-server-with-dashboard.vercel.app',
+        baseURL: 'http://localhost:5000',
     });
 
     useEffect(() => {

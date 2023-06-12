@@ -42,7 +42,7 @@ const SelClassTable = ({ cart, refetch }) => {
             <div className="uppercase font-semibold h-[60px] flex justify-evenly items-center">
                 <h3 className="md:text-3xl text-xl">Total Classes: {cart.length}</h3>
                 <h3 className="md:text-3xl text-xl">Total Price: ${total}</h3>
-                <Link to={'../reservations'} className="button">PAY</Link>
+                <Link to={'../payment'} className="button">PAY</Link>
             </div>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">

@@ -1,19 +1,11 @@
-import React, { useEffect } from 'react';
-import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
-import { useQuery } from '@tanstack/react-query';
-import useAuth from '../../../../Hooks/useAuth';
+import React from 'react';
+
 import SelClassTable from './SelClassTable';
+import useSelectedData from '../../../../Hooks/useSelectedData';
 
 const SelectedClasses = () => {
-    const { user } = useAuth()
-    const [axiosSecure] = useAxiosSecure()
-    const { data: cart = [], refetch } = useQuery({
-        queryKey: ["selectedClass"],
-        queryFn: async () => {
-            const response = await axiosSecure.get(`/selectedClasses/${user.email}`);
-            return response.data;
-        }
-    })
+  
+    const [cart, refetch] = useSelectedData()
 
     return (
         <div className='MyContainer w-full'>

@@ -19,7 +19,7 @@ const CheckForm = () => {
     const [cart] = useSelectedData()
     const element = useElements()
 
-
+    
     const totalPrice = cart?.reduce((sum, item) => item.price + sum, 0);
     if (totalPrice <= 0) {
         Toast.fire({
@@ -99,14 +99,15 @@ const CheckForm = () => {
                 BookedId: cart.map(bookedID => bookedID.bookedClass),
                 LanguageNames: cart.map(bookedItem => bookedItem?.foreignLanguageName)
             }
+            console.log(payment);
             axiosSecure.post('/payment', payment).then(res => {
                 if (res.data.insertedId) {
                     Toast.fire({
                         icon: 'success',
                         title: 'Payment successful'
-                     })
-                axiosSecure.patch('/availableSeat')
-                
+                    })
+                    axiosSecure.patch('/availableSeat')
+
                 }
 
             })

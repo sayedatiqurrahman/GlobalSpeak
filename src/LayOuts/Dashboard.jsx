@@ -2,6 +2,7 @@ import React from 'react';
 import { FaBars, FaChalkboardTeacher, FaClipboardList, FaHome, FaHospitalUser, FaMoneyCheck, FaRegCalendarCheck, FaRegCalendarPlus } from 'react-icons/fa';
 import { GiClassicalKnowledge } from 'react-icons/gi';
 import { BiLogOut, BiSelectMultiple } from 'react-icons/bi';
+import { CgArrangeFront } from 'react-icons/cg';
 
 
 import { NavLink, Outlet } from 'react-router-dom';
@@ -13,6 +14,9 @@ const Dashboard = () => {
     const [userRole] = useUserRole()
     const student = userRole === 'Student'
     const Instructor = userRole === 'Instructor'
+    const Admin = userRole === 'Admin'
+
+
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -47,6 +51,19 @@ const Dashboard = () => {
 
                         </>
                     }
+
+
+                    {/* Admin Routes */}
+                    {
+                        Admin && <>
+                            <li><NavLink className={({ isActive }) => isActive ? "active" : 'default'} to={'./home'}><FaHospitalUser /> Home</NavLink></li>
+                            <li><NavLink className={({ isActive }) => isActive ? "active" : 'default'} to={'./manageClasses'}><CgArrangeFront /> Manage Classes</NavLink></li>
+                            <li><NavLink className={({ isActive }) => isActive ? "active" : 'default'} to={'./manageUsers'}>< BiSelectMultiple /> Manage Users</NavLink></li>
+
+                        </>
+                    }
+
+
 
                     {/* Divider for home routes */}
                     <div className='divider divide-x-8 divide-neutral-800 mt-20 mb-10 '></div>

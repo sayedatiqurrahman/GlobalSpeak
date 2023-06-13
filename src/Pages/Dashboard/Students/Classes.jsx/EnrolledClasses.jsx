@@ -14,7 +14,7 @@ const EnrolledClasses = () => {
             return data
         }
     })
-    console.log(EnrolledClass)
+
     const classes = false;
     return (
         <div className='MyContainer'>

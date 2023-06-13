@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
+import useToast from '../../../Hooks/useToast';
 
 const AddClass = () => {
     const [axiosSecure] = useAxiosSecure()
     const { user } = useAuth()
+    const [Toast] = useToast()
     const [remainSeat, setRemainSeat] = useState()
     const [update, setUpdate] = useState()
     useEffect(() => {
-        const randomNumber = Math.floor(Math.random() * 50)
-        setRemainSeat(randomNumber)
+
+        setRemainSeat(0)
     }, [update])
 
     const { register, handleSubmit } = useForm();
@@ -46,8 +48,21 @@ const AddClass = () => {
                             status: "pending"
 
                         }
-                        axiosSecure.post('/CoursePost', addData).then(res => {
-                            console.log(res.data)
+                        axiosSecure.post('/AddCourse', addData).then(res => {
+                            if (res.data.insertedId) {
+                                Toast.fire({
+                                    icon: "success",
+                                    title: "You have successfully uploaded your course"
+                                })
+                                console.log(res.data)
+                            }
+
+                        }).catch(err => {
+                            Toast.fire({
+                                icon: "error",
+                                title: "Your course could not be uploaded Please try again"
+                            })
+                            console.log(err);
                         })
                     }
 

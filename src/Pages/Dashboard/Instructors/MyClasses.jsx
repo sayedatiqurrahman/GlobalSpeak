@@ -1,15 +1,18 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { VscFeedback } from "react-icons/vsc";
 import { FaRegEdit } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import useToast from '../../../Hooks/useToast';
+import useAuth from '../../../Hooks/useAuth';
 
 const MyClasses = () => {
+    const { user } = useAuth()
+    const [feedback, setFeedback] = useState()
     const [Toast] = useToast()
     const [axiosSecure] = useAxiosSecure()
-    const { data: myClasses = [] } = useQuery({
+    const { data: myClasses = [], refetch } = useQuery({
         queryKey: ['MyClasses'],
         queryFn: async () => {
             const res = await axiosSecure('/MyClasses')
@@ -42,7 +45,7 @@ const MyClasses = () => {
     }
 
     // todo feedback
-    const feedback = "Here is Your Feedback"
+
     return (
         <div className="w-full">
 
@@ -88,9 +91,12 @@ const MyClasses = () => {
                                 </td>
                                 <td className="">{item.numberOfStudents}</td>
                                 <td> <button className='btn btn-circle border border-[#f55400] text-[#f55400] relative'
-                                    onClick={() => window.my_modal_1.showModal()}>
+                                    onClick={() => {
+                                        window.my_modal_1.showModal()
+                                        setFeedback(item.feedback && item.feedback)
+                                    }}>
                                     {
-                                        feedback && <div className="badge text-xs bg-[#f55400] text-white absolute -top-2 right-0  gap-2">
+                                        item.feedback && <div className="badge text-xs bg-[#f55400] text-white absolute -top-2 right-0  gap-2">
                                             01 </div>
                                     }
                                     <VscFeedback size={20} /></button>
@@ -100,18 +106,7 @@ const MyClasses = () => {
                                     <button onClick={() => window.my_modal_2.showModal()} className='btn btn-circle border border-[#f55400] text-[#f55400]'>  <FaRegEdit size={20} /></button>
                                 </td>
                                 {/* Open the modal using ID.showModal() method */}
-                                {/* modal 1 for show feedback */}
-                                <dialog id="my_modal_1" className="modal">
-                                    <form method="dialog" className="modal-box">
-                                        <h3 className="font-bold text-lg">Hello! {item.
-                                            teacherName}</h3>
-                                        <p className="py-4">{!feedback ? "There is no feedback available " : feedback}</p>
-                                        <div className="modal-action">
-                                            {/* if there is a button in form, it will close the modal */}
-                                            <button className="btn">Close</button>
-                                        </div>
-                                    </form>
-                                </dialog>
+
 
                                 {/* modal 2 for update data */}
                                 <dialog id="my_modal_2" className="modal">
@@ -214,7 +209,22 @@ const MyClasses = () => {
                 </table>
             </div>
 
+            {/* modal 1 for show feedback */}
+            <dialog id="my_modal_1" className="modal">
+                <form method="dialog" className="modal-box text-center">
+                    <h3 className="font-bold text-lg">Hello! {user.
+                        displayName}</h3>
 
+                    <div className='bg-base-100 shadow rounded mt-3'>
+                        <b>{feedback && "Feedback From Admin"}</b>
+                        <p className="py-4 bg-gray-100 ">{!feedback ? "There is no feedback available " : feedback}</p>
+                    </div>
+                    <div className="modal-action">
+                        {/* if there is a button in form, it will close the modal */}
+                        <button className="btn">Close</button>
+                    </div>
+                </form>
+            </dialog>
 
 
         </div>

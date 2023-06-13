@@ -19,6 +19,8 @@ const Home = () => {
                     <Lottie className='h-full' animationData={mouse} loop={true} />
                 </a>
             </div>
+
+
             <div data-aos="fade-left"
                 data-aos-duration="1000"
                 data-aos-mirror="true"
@@ -26,6 +28,7 @@ const Home = () => {
                 data-aos-easing="ease-in-out"
                 id='popularClass' className='mt-40'><PopularClasses />
             </div>
+
 
             <div data-aos="fade-right"
                 data-aos-duration="1000"

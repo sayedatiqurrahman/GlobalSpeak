@@ -2,11 +2,16 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { VscFeedback } from 'react-icons/vsc';
-
+import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
+import useAuth from '../../../Hooks/useAuth';
+import useToast from '../../../Hooks/useToast';
+
 
 const ManageClasses = () => {
-
+    const { register, handleSubmit } = useForm();
+    const [Toast] = useToast()
+    const { user } = useAuth()
     const [axiosSecure] = useAxiosSecure()
     const { data: classes = [], refetch } = useQuery({
         queryKey: ['manageClasses'],
@@ -20,11 +25,9 @@ const ManageClasses = () => {
 
 
 
-    // todo feedback
-    const feedback = "Here is Your Feedback"
 
     // handle button disabled or updating status
-    const [disabled, setDisabled] = useState(false)
+
     const handleDenied = (id) => {
         Swal.fire({
             title: 'Are you sure?',
@@ -80,12 +83,28 @@ const ManageClasses = () => {
                         )
                     }
                 })
+            }
+        })
+    }
 
+    const [itemId, setItemId] = useState('')
+    const onSubmit = async (data) => {
+        console.log(data);
+        console.log(itemId);
 
+        axiosSecure.put(`/feedback/${itemId}`, data).then(res => {
+            console.log(res.data);
+            if (res.data.modifiedCount > 0) {
+                Toast.fire({
+                    icon: "success",
+                    title: "Feedback Successful"
+                })
             }
         })
 
     }
+
+
     return (
         <div className="w-full">
 
@@ -113,80 +132,96 @@ const ManageClasses = () => {
                     </thead>
                     <tbody >
                         {
-                            classes.map((item, index) => <tr
-                                key={item._id}
-                            >
-                                <td>
-                                    {index + 1}
-                                </td>
-                                <td>
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
-                                            <img src={item.languageImage} alt="Language Image" />
+                            classes.map((item, index) => <>
+                                <tr
+                                    key={item._id}
+                                >
+                                    <td>
+                                        {index + 1}
+                                    </td>
+                                    <td>
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src={item.languageImage} alt="Language Image" />
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    {item.foreignLanguageName}
-                                </td>
-                                <td>
-                                    {item.teacherName}
-                                </td>
+                                    </td>
+                                    <td>
+                                        {item.foreignLanguageName}
+                                    </td>
+                                    <td>
+                                        {item.teacherName}
+                                    </td>
 
-                                <td>
-                                    {item.email}
-                                </td>
-                                <td className="">{item.availableSeat}</td>
-                                <td className="">{item.price}</td>
+                                    <td>
+                                        {item.email}
+                                    </td>
+                                    <td className="">{item.availableSeat}</td>
+                                    <td className="">{item.price}</td>
 
-                                <td>
-                                    {item.status === "pending" && <button className='btn btn-xs btn-warning'>{item.status}</button> || item.status === "denied" && <button className='btn btn-xs btn-error'>{item.status}</button> || item.status === "approved" && <button className='btn btn-xs btn-success'>{item.status}</button>}
-                                </td>
+                                    <td>
+                                        {item.status === "pending" && <button className='btn btn-xs btn-warning'>{item.status}</button> || item.status === "denied" && <button className='btn btn-xs btn-error'>{item.status}</button> || item.status === "approved" && <button className='btn btn-xs btn-success'>{item.status}</button>}
+                                    </td>
 
-                                <td>
-                                    <div className="btn-group btn-group-vertical lg:btn-group-horizontal ">
-                                        {/* denied button */}
-                                        <button disabled={item.status === "approved" || item.status === "denied"} onClick={() => handleDenied(item._id)} className="btn btn-xs text-white hover:text-red-700 bg-red-600">Denied</button>
-                                        {/* approved button */}
-                                        <button disabled={item.status === "approved" || item.status === "denied"} onClick={() => handleApproved(item._id)} className="btn btn-xs text-white hover:text-green-700 bg-green-600">Approved</button>
-                                    </div>
-                                </td>
+                                    <td>
+                                        <div className="btn-group btn-group-vertical lg:btn-group-horizontal ">
+                                            {/* denied button */}
+                                            <button disabled={item.status === "approved" || item.status === "denied"} onClick={() => handleDenied(item._id)} className="btn btn-xs text-white hover:text-red-700 bg-red-600">Denied</button>
+                                            {/* approved button */}
+                                            <button disabled={item.status === "approved" || item.status === "denied"} onClick={() => handleApproved(item._id)} className="btn btn-xs text-white hover:text-green-700 bg-green-600">Approved</button>
+                                        </div>
+                                    </td>
 
-                                <td> <button className='btn btn-circle border border-[#f55400] text-[#f55400] relative'
-                                    onClick={() => window.my_modal_1.showModal()}>
-                                    {
-                                        feedback && <div className="badge text-xs bg-[#f55400] text-white absolute -top-2 right-0  gap-2">
-                                            01 </div>
-                                    }
-                                    <VscFeedback size={20} /></button>
+                                    <td> <button className='btn btn-circle border border-[#f55400] text-[#f55400] relative'
+                                        onClick={() => {
+                                            window.my_modal_2.showModal()
+                                            setItemId(item._id)
+                                        }}>
+                                        {
+                                            item.feedback && <div className="badge text-xs bg-[#f55400] text-white absolute -top-2 right-0  gap-2">
+                                                01 </div>
+                                        }
+                                        <VscFeedback size={20} /></button>
 
-                                </td>
-                                {/* Open the modal using ID.showModal() method */}
-                                {/* modal 1 for show feedback */}
-                                <dialog id="my_modal_1" className="modal">
-                                    <form method="dialog" className="modal-box">
-                                        <h3 className="font-bold text-lg">Hello! {item.
-                                            teacherName}</h3>
-                                        <p className="py-4">Please Leave Your Feedback</p>
-
-                                    </form>
-                                    <form method="dialog" className="modal-backdrop">
-                                        <button>close</button>
-                                    </form>
-                                </dialog>
+                                    </td>
 
 
-                            </tr>)
+                                </tr>
+
+
+                            </>
+                            )
                         }
 
 
                     </tbody>
                 </table>
             </div>
+            {/* Open the modal using ID.showModal() method */}
+            {/* modal 1 for show feedback */}
+            <dialog id="my_modal_2" className="modal">
+                <form onSubmit={handleSubmit(onSubmit)} method="dialog" className="modal-box text-center ">
+                    <div className='bg-base-100 rounded p-4 shadow'>
+                        <h3 className="font-bold text-lg">Hello! {user.
+                            displayName}</h3>
+                        <p>Please Leave your message as an admin <br />
+                            Why you approved or denied this item ?
+                        </p>
+                        <textarea
+                            {...register('feedback')}
+                            className='textarea w-full textarea-bordered mt-4 border-[#f55400]'
+                            placeholder='Enter Your Feedback'
+                            required
+                        ></textarea>
 
+                        <input className='button mt-5' type="submit" value='Feedback' />
+                    </div>
 
-
-
+                </form>
+                <form method="dialog" className="modal-backdrop">
+                    <button>close</button>
+                </form>
+            </dialog>
         </div>
     );
 };

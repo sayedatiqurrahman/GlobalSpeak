@@ -11,7 +11,7 @@ const ClassCard = ({ pClass, classes }) => {
     const [Toast] = useToast()
 
     const { languageImage, courseEnrollDeadline, foreignLanguageName, teacherName, availableSeat, price, _id } = pClass
-
+    console.log(price);
     if (user) {
         const [userRole] = useUserRole()
         if (userRole === "Instructor" || userRole === "Admin" || availableSeat === 0) {
@@ -62,11 +62,12 @@ const ClassCard = ({ pClass, classes }) => {
                     <h2 className="card-title">{foreignLanguageName}</h2>
 
                     <p><b>Instructor Name:</b> {teacherName}</p>
-                    {
+                    <p><b>Price:</b> ${price}</p>
+                    {/* {
                         classes ? <>
-                            <p><b>Price:</b> ${price}</p>
+                            
                         </> : <></>
-                    }
+                    } */}
                     <div className="card-actions justify-end">
                         <div className="badge outline outline-1 outline-[#f55400]">Deadline: {courseEnrollDeadline}</div>
                         <div className="badge outline outline-1 outline-[#f55400]">Available Seat: {availableSeat}</div>

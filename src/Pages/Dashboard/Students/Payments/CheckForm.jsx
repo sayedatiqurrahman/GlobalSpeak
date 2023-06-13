@@ -21,7 +21,12 @@ const CheckForm = () => {
 
 
     const totalPrice = cart?.reduce((sum, item) => item.price + sum, 0);
-
+    if (totalPrice <= 0) {
+        Toast.fire({
+            icon: 'error',
+            title: "Make sure you have selected your course"
+        })
+    }
     useEffect(() => {
         if (totalPrice > 0) {
             axiosSecure.post('/create-payment-intent', { price: totalPrice })
@@ -30,12 +35,7 @@ const CheckForm = () => {
 
                 })
         }
-        if (totalPrice <= 0) {
-            Toast.fire({
-                icon: 'error',
-                title: "Make sure you have selected your course"
-            })
-        }
+
     }, [totalPrice, cart])
     console.log(clientSecret);
 
@@ -104,8 +104,11 @@ const CheckForm = () => {
                     Toast.fire({
                         icon: 'success',
                         title: 'Payment successful'
-                    })
+                     })
+                axiosSecure.patch('/availableSeat')
+                
                 }
+
             })
             setProcessing(false)
         }

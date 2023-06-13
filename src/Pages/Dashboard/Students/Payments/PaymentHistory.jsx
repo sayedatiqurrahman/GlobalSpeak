@@ -5,7 +5,7 @@ import SectionTItle from '../../../../Components/SectionTItle';
 
 const PaymentHistory = () => {
     const [axiosSecure] = useAxiosSecure()
-    const { data: classes } = useQuery({
+    const { data: classes = [] } = useQuery({
         queryKey: ['paymentHistory'],
         queryFn: async () => {
             const res = await axiosSecure('/paymentHistory')

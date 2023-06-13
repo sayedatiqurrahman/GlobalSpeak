@@ -49,7 +49,6 @@ const SignUp = () => {
             })
             return
         }
-        console.log('confirm password is correct')
         if (data.image.length > 0) {
             const formData = new FormData()
             formData.append('image', data.image[0])

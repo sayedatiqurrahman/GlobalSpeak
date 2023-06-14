@@ -60,7 +60,7 @@ const ClassCard = ({ pClass, classes }) => {
 
         <>
             {
-                status === "approved" && <div className={availableSeat === 0 ? "card w-96 bg-red-600 text-white shadow-xl" : "card w-96 bg-base-100 shadow-xl"}>
+                status === "approved" && <div className={availableSeat === 0 ? "card  bg-red-600 text-white shadow-xl" : "card  bg-base-100 shadow-xl"}>
                     <figure><img className='h-52 w-full' src={languageImage} alt="Language image" /></figure>
                     <div className="card-body">
                         {/* name of foreign language */}

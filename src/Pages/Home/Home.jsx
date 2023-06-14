@@ -26,7 +26,7 @@ const Home = () => {
                 data-aos-mirror="true"
                 data-aos-once="false"
                 data-aos-easing="ease-in-out"
-                id='popularClass' className='mt-40'><PopularClasses />
+                id='popularClass' className='mt-40 MyContainer'><PopularClasses />
             </div>
 
 

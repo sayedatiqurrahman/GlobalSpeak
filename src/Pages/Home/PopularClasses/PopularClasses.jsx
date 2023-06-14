@@ -22,7 +22,7 @@ const PopularClasses = () => {
                 <SectionTItle title={'Popular Classes'} subTitle={'Exploring the Trend: Popular Classes Unveiled'} />
             </Fade>
 
-            <div className='my-[130px]   grid md:grid-cols-2  lg:grid-cols-3 gap-5 MyContainer justify-center items-center'>
+            <div className='my-[130px]  MyContainer  gap-10 grid md:grid-cols-2  lg:grid-cols-3   justify-center items-center'>
                 {
                     data?.map(pClass => <ClassCard key={pClass._id} pClass={pClass} />)
                 }

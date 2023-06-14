@@ -12,7 +12,7 @@ const Home = () => {
 
     AOS.init();
     return (
-        <>
+        <div className='overflow-x-hidden'>
             <Banner />
             <div className='h-28 mt-5'>
                 <a href="#popularClass">
@@ -49,7 +49,7 @@ const Home = () => {
                 <Testimonial />
             </div>
 
-        </>
+        </div>
     );
 };
 

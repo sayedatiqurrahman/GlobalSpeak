@@ -97,8 +97,7 @@ const ManageUsers = () => {
                     </thead>
                     <tbody >
                         {
-                            users.map((item, index) => <>
-                                <tr
+                            users.map((item, index) =><tr
                                     key={item._id}
                                 >
                                     <td>
@@ -134,7 +133,7 @@ const ManageUsers = () => {
                                 </tr>
 
 
-                            </>
+                        
                             )
                         }
 

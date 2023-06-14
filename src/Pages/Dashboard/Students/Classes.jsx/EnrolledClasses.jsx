@@ -22,7 +22,7 @@ const EnrolledClasses = () => {
 
             <div className='mt-10 grid md:grid-cols-2 2xl:grid-cols-3 gap-3'>
                 {
-                    EnrolledClass.map(pClass => <ClassCard pClass={pClass} classes={classes} />)
+                    EnrolledClass.map(pClass => <ClassCard key={pClass._id} pClass={pClass} classes={classes} />)
                 }
             </div>
 

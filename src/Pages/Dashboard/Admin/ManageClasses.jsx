@@ -22,7 +22,7 @@ const ManageClasses = () => {
         }
     })
 
-
+    console.log(classes);
 
 
 
@@ -132,8 +132,7 @@ const ManageClasses = () => {
                     </thead>
                     <tbody >
                         {
-                            classes.map((item, index) => <>
-                                <tr
+                            classes.map((item, index) =><tr
                                     key={item._id}
                                 >
                                     <td>
@@ -189,7 +188,7 @@ const ManageClasses = () => {
                                 </tr>
 
 
-                            </>
+                          
                             )
                         }
 

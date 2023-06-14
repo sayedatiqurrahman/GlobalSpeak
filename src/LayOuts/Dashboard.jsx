@@ -8,10 +8,15 @@ import { CgArrangeFront } from 'react-icons/cg';
 import { NavLink, Outlet } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import useUserRole from '../Hooks/useUserRole';
+import Loading from '../Components/Loading';
 
 const Dashboard = () => {
     const { user, logOut } = useAuth()
-    const [userRole] = useUserRole()
+    const [userRole, userRLoading, uerRoleRefetch] = useUserRole()
+    if (userRLoading) {
+        return <Loading />
+    }
+    uerRoleRefetch()
     const student = userRole === 'Student'
     const Instructor = userRole === 'Instructor'
     const Admin = userRole === 'Admin'

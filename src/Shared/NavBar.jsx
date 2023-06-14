@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { HiOutlineMenuAlt3 } from 'react-icons/Hi';
 import useAuth from '../Hooks/useAuth';
+import logo from "../../public/GlobalSpeakLogo.png"
 const NavBar = () => {
     const navigate = useNavigate()
     const { user, logOut } = useAuth()
@@ -59,7 +60,7 @@ const NavBar = () => {
                         </ul>
                     </div>
                     <Link className='flex ml-3' to={'/'}>
-                        <img className='h-10' src={'../../public/GlobalSpeakLogo.png'} alt="" />
+                        <img className='h-10' src={logo} alt="" />
                         <div>
                             <p className=" text-[#f55400] font-semibold normal-case text-xl">GlobalSpeak</p>
                             <p className='text-gray-400 -mt-[10px] md:block hidden'>Summer Language School</p>

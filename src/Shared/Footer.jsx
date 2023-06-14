@@ -1,6 +1,7 @@
 import Aos from 'aos';
 import React from 'react';
 
+import logo from '../../public/GlobalSpeakLogo.png'
 const Footer = () => {
     Aos.init();
     return (
@@ -78,7 +79,7 @@ const Footer = () => {
             <hr className='border-[#f55400]' />
 
             <img
-                className='h-10 mt-2 mx-auto' src='../../public/GlobalSpeakLogo.png' />
+                className='h-10 mt-2 mx-auto' src={logo} />
 
             <p className=' mb-4 textShadow '>Copyright © 2023 GlobalSpeak: Summer Language School</p>
         </div>

@@ -7,8 +7,10 @@ import { Navigate } from 'react-router-dom';
 
 const InstructorRoute = ({ children }) => {
     const [Toast] = useToast()
-    const [userRole, userRLoading] = useUserRole()
+    const [userRole, userRLoading, uerRoleRefetch] = useUserRole()
     const { user, loading, logOut } = useAuth()
+
+    uerRoleRefetch()
 
     if (loading || userRLoading) {
         return <Loading />

@@ -8,16 +8,16 @@ import { Navigate } from 'react-router-dom';
 const StudentRoute = ({ children }) => {
 
     const [Toast] = useToast()
-    const [userRole, userRLoading] = useUserRole()
-    const { user, loading, logOut } = useAuth()
-
+    const [userRole, userRLoading, uerRoleRefetch] = useUserRole()
+    const { loading, logOut } = useAuth()
+    uerRoleRefetch()
     if (loading || userRLoading) {
         return <Loading />
     }
     const Student = userRole !== "Student"
 
 
-    if (!Student) {
+    if (!Student ) {
         return children
     } else {
         logOut()

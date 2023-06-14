@@ -6,23 +6,26 @@ import useAuth from '../Hooks/useAuth';
 import useToast from '../Hooks/useToast';
 
 const AdminRoute = ({ children }) => {
-    const [userRole, userRLoading] = useUserRole()
+    const [userRole, userRLoading, uerRoleRefetch] = useUserRole()
     const { logOut, loading } = useAuth()
     const [Toast] = useToast()
     if (loading || userRLoading) {
         return <Loading />
     }
+    uerRoleRefetch()
 
-    const admin = userRole === "Admin"
-    if (admin) {
-        return children
-    } else {
-        logOut()
-        Toast.fire({
-            icon: "error",
-            title: "You are not an administrator"
-        })
-        return <Navigate to={'/login'} />
+    if (!userRLoading) {
+        const admin = userRole === "Admin"
+        if (admin) {
+            return children
+        } else {
+            logOut()
+            Toast.fire({
+                icon: "error",
+                title: "You are not an administrator"
+            })
+            return <Navigate to={'/login'} />
+        }
     }
 };
 

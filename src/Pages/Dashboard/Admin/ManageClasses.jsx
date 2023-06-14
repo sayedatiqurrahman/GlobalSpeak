@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import useAuth from '../../../Hooks/useAuth';
 import useToast from '../../../Hooks/useToast';
-
+import { BsFillSendCheckFill } from 'react-icons/bs'
 
 const ManageClasses = () => {
     const { register, handleSubmit } = useForm();
@@ -179,7 +179,7 @@ const ManageClasses = () => {
                                         }}>
                                         {
                                             item.feedback && <div className="badge text-xs bg-[#f55400] text-white absolute -top-2 right-0  gap-2">
-                                                01 </div>
+                                                <BsFillSendCheckFill /> </div>
                                         }
                                         <VscFeedback size={20} /></button>
 

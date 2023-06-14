@@ -36,7 +36,7 @@ const Banner = () => {
                 navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
 
-                className="MyContainer h-full w-full text-sm bg-[#eeeeee11]"
+                className="MyContainer h-full w-full text-sm bg-[#eeeeee11] rounded-2xl"
             >
                 <SwiperSlide>
                     <div className='flex  flex-col-reverse md:flex-row items-center justify center md:mt-10  '>

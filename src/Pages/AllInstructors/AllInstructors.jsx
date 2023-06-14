@@ -5,7 +5,7 @@ import PopInstructorCard from '../../Components/PopInstructorCard';
 const AllInstructors = () => {
     const [instructors, setInstructors] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/').then(res => res.json()).then(data => setInstructors(data))
+        fetch('https://summercampgs.vercel.app/').then(res => res.json()).then(data => setInstructors(data))
     }, [])
     return (
         <>

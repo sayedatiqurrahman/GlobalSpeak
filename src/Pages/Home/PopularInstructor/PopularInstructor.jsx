@@ -10,7 +10,7 @@ const PopularInstructor = () => {
     const [data, setData] = useState()
     useEffect(() => {
 
-        fetch('http://localhost:5000/').then(res => res.json()).then(data => {
+        fetch('https://summercampgs.vercel.app/').then(res => res.json()).then(data => {
             // console.log(data);
             const topClasses = data.filter(cItems => cItems.numberOfStudents >= 50)
             setData(topClasses)

@@ -1,6 +1,5 @@
 import React from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+
 import NavBar from '../Shared/NavBar';
 import Footer from '../Shared/Footer';
 import { Outlet } from 'react-router-dom';
@@ -11,16 +10,12 @@ const MainLay = () => {
     if (loading) {
         return <Loading />
     }
-    AOS.init();
+
     return (
         <div>
-
             <NavBar />
-
             <Outlet />
-            <div data-aos='fade-left'>
-                <Footer />
-            </div>
+            <Footer />
         </div>
     );
 };

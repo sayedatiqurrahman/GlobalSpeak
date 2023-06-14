@@ -4,15 +4,13 @@ import PopularClasses from './PopularClasses/PopularClasses';
 import Lottie from "lottie-react";
 import mouse from '../../../public/mouse.json'
 import PopularInstructor from './PopularInstructor/PopularInstructor';
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // You can also use <link> for styles
+// You can also use <link> for styles
 import Testimonial from './Testimonial/Testimonial';
 
 const Home = () => {
 
-    AOS.init();
     return (
-        <div className='overflow-x-hidden'>
+        <div className='w-full'>
             <Banner />
             <div className='h-28 mt-5'>
                 <a href="#popularClass">
@@ -21,29 +19,17 @@ const Home = () => {
             </div>
 
 
-            <div data-aos="fade-left"
-                data-aos-duration="1000"
-                data-aos-mirror="true"
-                data-aos-once="false"
-                data-aos-easing="ease-in-out"
+            <div
                 id='popularClass' className='mt-40 MyContainer'><PopularClasses />
             </div>
 
 
-            <div data-aos="fade-right"
-                data-aos-duration="1000"
-                data-aos-mirror="true"
-                data-aos-once="false"
-                data-aos-easing="ease-in-out"
+            <div
                 className='my-[130px] MyContainer'>
                 <PopularInstructor />
             </div>
 
-            <div data-aos="fade-right"
-                data-aos-duration="1000"
-                data-aos-mirror="true"
-                data-aos-once="false"
-                data-aos-easing="ease-in-out"
+            <div
                 className='my-[130px] MyContainer'
             >
                 <Testimonial />

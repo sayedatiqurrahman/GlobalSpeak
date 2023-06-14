@@ -17,7 +17,7 @@ import Fade from 'react-reveal/Fade';
 const Testimonial = () => {
     const [testData, setTestData] = useState([])
     useEffect(() => {
-        fetch('https://summercampgs.vercel.app/testimonials').then(res => res.json()).then(data => setTestData(data))
+        fetch('http://localhost:5000/testimonials').then(res => res.json()).then(data => setTestData(data))
     }, [])
     const ratings = 5.00
     return (

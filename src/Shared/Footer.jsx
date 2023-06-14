@@ -1,9 +1,9 @@
-import Aos from 'aos';
+
 import React from 'react';
 
 import logo from '../../public/GlobalSpeakLogo.png'
 const Footer = () => {
-    Aos.init();
+
     return (
         <div className='text-center mt-[130px] pt-[50px]'>
             <hr className='border-[#f55400]' />
@@ -26,11 +26,7 @@ const Footer = () => {
 
 
             <div className='pb-[50px] MyContainer gap-5 max-w-7xl grid sm:grid-cols-2 lg:grid-cols-4'>
-                <ul data-aos="fade-left"
-                    data-aos-duration="1000"
-                    data-aos-mirror="true"
-                    data-aos-once="false"
-                    data-aos-easing="ease-in-out">
+                <ul >
                     <li className='text-xl fontB'>Popular Classes</li>
                     <li>Turkish</li>
                     <li>Korean</li>
@@ -40,11 +36,7 @@ const Footer = () => {
                     <li>Spanish</li>
 
                 </ul>
-                <ul data-aos="fade-left"
-                    data-aos-duration="1000"
-                    data-aos-mirror="true"
-                    data-aos-once="false"
-                    data-aos-easing="ease-in-out">
+                <ul >
                     <li className='text-xl fontB'>Popular Instructors </li>
                     <li>Ayşe Kaya</li>
                     <li>Seo Yeon-ji</li>
@@ -53,22 +45,14 @@ const Footer = () => {
                     <li>Hans Müller</li>
                     <li>Maria Rodriguez</li>
                 </ul>
-                <ul data-aos="fade-right"
-                    data-aos-duration="1000"
-                    data-aos-mirror="true"
-                    data-aos-once="false"
-                    data-aos-easing="ease-in-out">
+                <ul>
                     <li className='text-xl fontB'>Contacts</li>
                     <li>1122 Potter Rd, Antelope</li>
                     <li>info@example.com</li>
                     <li>18881234567</li>
 
                 </ul>
-                <ul data-aos="fade-right"
-                    data-aos-duration="1000"
-                    data-aos-mirror="true"
-                    data-aos-once="false"
-                    data-aos-easing="ease-in-out">
+                <ul>
                     <li className='text-xl fontB'>Social</li>
                     <li>Facebook</li>
                     <li>Behance</li>

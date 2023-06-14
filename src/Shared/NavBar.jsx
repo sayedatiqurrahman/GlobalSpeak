@@ -49,7 +49,7 @@ const NavBar = () => {
 
     return (
         <div>
-            <div className="navbar bg-base-100 MyContainer">
+            <div className="navbar bg-base-100 MyContainer  ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -72,7 +72,7 @@ const NavBar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <div className="navbar-end ">
+                <div className="navbar-end  ">
 
                     {/* dark or light theme toggle button */}
 

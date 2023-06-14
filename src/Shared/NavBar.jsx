@@ -111,10 +111,6 @@ const NavBar = () => {
                                     </NavLink>
                                 </li>
 
-                                <li><NavLink className={({ isActive }) => isActive ? 'active' : ''} to={'/login'}>Login</NavLink></li>
-
-                                <li><NavLink className={({ isActive }) => isActive ? 'active' : ''} to={'/registration'}>Sign up</NavLink></li>
-
                                 <li onClick={handleLogOut}><Link >Logout</Link></li>
                             </ul>
                         </div> :

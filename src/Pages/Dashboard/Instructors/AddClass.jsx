@@ -19,7 +19,7 @@ const AddClass = () => {
     const onSubmit = async (data) => {
         setUpdate(!update)
         data.numberOfStudents = remainSeat
-        console.log(remainSeat);
+        // console.log(remainSeat);
         if (data.languageImage.length > 0) {
             const formData = new FormData()
             formData.append('image', data.languageImage[0])
@@ -54,7 +54,7 @@ const AddClass = () => {
                                     icon: "success",
                                     title: "You have successfully uploaded your course"
                                 })
-                                console.log(res.data)
+                                // console.log(res.data)
                             }
 
                         }).catch(err => {
@@ -62,7 +62,7 @@ const AddClass = () => {
                                 icon: "error",
                                 title: "Your course could not be uploaded Please try again"
                             })
-                            console.log(err);
+                            // console.log(err);
                         })
                     }
 

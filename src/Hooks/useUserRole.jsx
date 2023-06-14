@@ -19,7 +19,7 @@ const useUserRole = () => {
 
 
 
-    const { data: userRole, isLoading: userRLoading, refetch: uerRoleRefetch } = useQuery({
+    const { data: userRole = '', isLoading: userRLoading, refetch: uerRoleRefetch } = useQuery({
         queryKey: ['userRole', 'email'],
         enabled: !loading,
         queryFn: async () => {
@@ -29,7 +29,7 @@ const useUserRole = () => {
         }
     })
 
-
+    // console.log(userRole);
     return [userRole, userRLoading, uerRoleRefetch];
 
 };

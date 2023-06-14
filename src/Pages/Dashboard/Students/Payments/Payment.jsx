@@ -9,7 +9,7 @@ const Payment = () => {
     const [cart] = useSelectedData()
     const total = cart.reduce((sum, item) => item.price + sum, 0);
     const amount = total * 100
-    console.log(amount);
+    // console.log(amount);
 
     return (
         <div className='w-[97%] md:w-[90%] mx-auto '>

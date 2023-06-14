@@ -13,7 +13,7 @@ const ManageUsers = () => {
             return data
         }
     })
-    console.log(users);
+    // console.log(users);
     const handleInstructor = (id) => {
         Swal.fire({
             title: 'Are you sure?',
@@ -27,7 +27,7 @@ const ManageUsers = () => {
             if (result.isConfirmed) {
                 const newRole = { role: "Instructor" }
                 axiosSecure.patch(`/updateRole/${id}`, newRole).then(res => {
-                    console.log(res.data)
+                    // console.log(res.data)
                     if (res.data.modifiedCount > 0) {
                         refetch()
                         Swal.fire(
@@ -44,7 +44,7 @@ const ManageUsers = () => {
     }
 
     const handleAdmin = (id) => {
-        console.log(id);
+        // console.log(id);
         Swal.fire({
             title: 'Are you sure?',
             text: "You want to Make this user : Admin !",
@@ -57,7 +57,7 @@ const ManageUsers = () => {
             if (result.isConfirmed) {
                 const newStatus = { role: "Admin" }
                 axiosSecure.patch(`/updateRole/${id}`, newStatus).then(res => {
-                    console.log(res.data)
+                    // console.log(res.data)
                     if (res.data.modifiedCount > 0) {
                         refetch()
                         Swal.fire(

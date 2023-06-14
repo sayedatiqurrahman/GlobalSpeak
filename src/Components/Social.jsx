@@ -9,7 +9,7 @@ const Social = () => {
     const { googleLogin } = useAuth()
     const handleGoogleLogin = () => {
         googleLogin().then(res => {
-            console.log(res);
+            // console.log(res);
             const user = {
                 name: res.user.displayName,
                 email: res.user.email,

@@ -13,7 +13,7 @@ const useSelectedData = () => {
             return response.data;
         }
     })
-    console.log(cart);
+    // console.log(cart);
     return [cart, refetch]
 };
 

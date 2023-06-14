@@ -20,7 +20,7 @@ const SignUp = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = async (data) => {
 
-        console.log(data)
+        // console.log(data)
         if (data.password.length <= 6) {
             Toast.fire({
                 icon: 'error',
@@ -57,13 +57,13 @@ const SignUp = () => {
             if (data.image[0]) {
 
                 await fetch(`https://api.imgbb.com/1/upload?key=${api}`, { method: 'POST', body: formData }).then(res => res.json()).then(imgData => {
-                    console.log(imgData.data.display_url)
+                    // console.log(imgData.data.display_url)
 
                     if (imgData.data.display_url) {
-                        console.log(data);
+                        // console.log(data);
                         createAccount(data.email, data.password)
                             .then(() => {
-                                console.log(data.displayName);
+                                // console.log(data.displayName);
 
                                 updateProfile(auth.currentUser, {
                                     displayName: data.name,
@@ -79,7 +79,7 @@ const SignUp = () => {
                                         headers: { "Content-Type": "application/json" },
                                         body: JSON.stringify(user)
                                     }).then(res => res.json()).then(uData => {
-                                        console.log(uData);
+                                        // console.log(uData);
                                         navigate('/login')
                                         Toast.fire({
                                             icon: 'success',

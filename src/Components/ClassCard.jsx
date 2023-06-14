@@ -9,7 +9,7 @@ const ClassCard = ({ pClass, classes }) => {
     let disabled = false;
     const { user } = useAuth()
     const [Toast] = useToast()
-    console.log(pClass);
+    // console.log(pClass);
     const { languageImage, courseEnrollDeadline, foreignLanguageName, teacherName, availableSeat, price, _id, numberOfStudents, status } = pClass
     if (user) {
         const [userRole] = useUserRole()
@@ -23,7 +23,7 @@ const ClassCard = ({ pClass, classes }) => {
 
     const handleBook = (id) => {
 
-        console.log(id);
+        // console.log(id);
         if (!user) {
             Toast.fire({
                 icon: "error",

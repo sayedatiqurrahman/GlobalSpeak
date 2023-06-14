@@ -41,7 +41,7 @@ const ManageClasses = () => {
             if (result.isConfirmed) {
                 const newStatus = { status: "denied" }
                 axiosSecure.patch(`/updateStatus/${id}`, newStatus).then(res => {
-                    console.log(res.data)
+                    // console.log(res.data)
                     if (res.data.modifiedCount > 0) {
                         refetch()
                         Swal.fire(
@@ -58,7 +58,7 @@ const ManageClasses = () => {
     }
 
     const handleApproved = (id) => {
-        console.log(id);
+        // console.log(id);
 
         Swal.fire({
             title: 'Are you sure?',
@@ -73,7 +73,7 @@ const ManageClasses = () => {
 
                 const newStatus = { status: "approved" }
                 axiosSecure.patch(`/updateStatus/${id}`, newStatus).then(res => {
-                    console.log(res.data)
+                    // console.log(res.data)
                     if (res.data.modifiedCount > 0) {
                         refetch()
                         Swal.fire(
@@ -89,11 +89,11 @@ const ManageClasses = () => {
 
     const [itemId, setItemId] = useState('')
     const onSubmit = async (data) => {
-        console.log(data);
-        console.log(itemId);
+        // console.log(data);
+        // console.log(itemId);
 
         axiosSecure.put(`/feedback/${itemId}`, data).then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             if (res.data.modifiedCount > 0) {
                 Toast.fire({
                     icon: "success",

@@ -12,11 +12,11 @@ import Loading from '../Components/Loading';
 
 const Dashboard = () => {
     const { user, logOut } = useAuth()
-    const [userRole, userRLoading, uerRoleRefetch] = useUserRole()
+    const [userRole, userRLoading] = useUserRole()
     if (userRLoading) {
         return <Loading />
     }
-    uerRoleRefetch()
+
     const student = userRole === 'Student'
     const Instructor = userRole === 'Instructor'
     const Admin = userRole === 'Admin'

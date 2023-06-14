@@ -4,7 +4,7 @@ import errorAnimation from '../../../public/learning.json'
 import { Link, useRouteError } from 'react-router-dom';
 const Errorpage = () => {
     const error = useRouteError()
-    console.log(error);
+    // console.log(error);
     return (
         <div className='text-center'>
             <div className='h-[500px] mx-auto'>

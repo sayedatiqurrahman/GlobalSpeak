@@ -9,16 +9,16 @@ const InstructorRoute = ({ children }) => {
     const [Toast] = useToast()
     const [userRole, userRLoading, uerRoleRefetch] = useUserRole()
     const { user, loading, logOut } = useAuth()
-
     uerRoleRefetch()
 
     if (loading || userRLoading) {
         return <Loading />
     }
-    const Instructor = userRole !== "Instructor"
+
+    const Instructor = userRole === "Instructor"
 
 
-    if (!Instructor) {
+    if (Instructor) {
         return children
     } else {
         logOut()

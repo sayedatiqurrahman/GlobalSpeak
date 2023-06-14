@@ -37,7 +37,7 @@ const CheckForm = () => {
         }
 
     }, [totalPrice, cart])
-    console.log(clientSecret);
+    // console.log(clientSecret);
 
     // const items = {
     //     selUpID: _id, bookedClass, foreignLanguageName, price, languageImage, teacherName, StudentEmail
@@ -99,7 +99,7 @@ const CheckForm = () => {
                 BookedId: cart.map(bookedID => bookedID.bookedClass),
                 LanguageNames: cart.map(bookedItem => bookedItem?.foreignLanguageName)
             }
-            console.log(payment);
+            // console.log(payment);
             axiosSecure.post('/payment', payment).then(res => {
                 if (res.data.insertedId) {
                     Toast.fire({

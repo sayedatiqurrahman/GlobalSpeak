@@ -22,14 +22,14 @@ const MyClasses = () => {
 
     })
     const total = myClasses.reduce((sum, item) => item.price + sum, 0);
-    console.log(myClasses);
+    // console.log(myClasses);
 
     const { register, handleSubmit } = useForm();
     const onSubmit = async (data) => {
-        console.log(data);
+        // console.log(data);
         axiosSecure.patch(`/updateData/${data._id}`, data)
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 if (response.data.modifiedCount > 0) {
                     Toast.fire({
                         icon: "success",

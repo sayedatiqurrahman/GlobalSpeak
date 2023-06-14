@@ -13,10 +13,10 @@ const Login = () => {
     const [show, setShow] = useState(false)
     const { register, handleSubmit } = useForm();
     const onSubmit = async (data) => {
-        console.log(data);
+        // console.log(data);
         if (data.email) {
             loginWithEmail(data.email, data.password).then(data => {
-                console.log(data)
+                // console.log(data)
                 Toast.fire({
                     icon: 'success',
                     title: ' Login Successfully'

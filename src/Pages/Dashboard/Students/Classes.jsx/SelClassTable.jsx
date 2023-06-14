@@ -6,7 +6,7 @@ import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
 const SelClassTable = ({ cart, refetch }) => {
     const [axiosSecure] = useAxiosSecure()
-    console.log(cart);
+    // console.log(cart);
     // how does reduce work!!!
     const total = cart.reduce((sum, item) => item.price + sum, 0);
 

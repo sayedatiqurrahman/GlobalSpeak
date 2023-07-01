@@ -10,7 +10,7 @@
 <img style="margin-left: 10px;" src="https://i.ibb.co/FJnBB77/Global-Speak-Logo.png" alt="Image description" height="30" width="30">
  <br/>
 **Website Name:** GlobalSpeak <br/>
-**Website Name:** Summer Language School <br/>
+**Website SubTitle:** Summer Language School <br/>
 
 
 <br/>

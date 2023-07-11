@@ -1,8 +1,10 @@
  **[LiveLink](https://globalspeak-d71fe.web.app/)**
 > https://globalspeak-d71fe.web.app/
 <br/>
-**[Server Side Repo]((https://github.com/sayedatiqurrahman/GlobalSpeakServer))**
-> > https://github.com/sayedatiqurrahman/GlobalSpeakServer
+
+**[Server Side Repo](https://github.com/sayedatiqurrahman/GlobalSpeakServer)**
+> https://github.com/sayedatiqurrahman/GlobalSpeakServer
+
 
 
 # <div align="center">**About My SummerCamp Project**</div>

@@ -4,8 +4,11 @@
 
 **Admin Account:**<br/>
 admin@atik.com <br/>
-
 pass: Admin@Atik
+
+**Instructor Account:**<br/>global@speakT.com <br/>
+pass: Glob@Speak
+
 
 **[Server Side Repo](https://github.com/sayedatiqurrahman/GlobalSpeakServer)**
 > https://github.com/sayedatiqurrahman/GlobalSpeakServer

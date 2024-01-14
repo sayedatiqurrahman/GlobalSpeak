@@ -2,6 +2,10 @@
 > https://globalspeak-d71fe.web.app/
 <br/>
 
+**Admin Account:**
+admin@atik.com
+pass: Admin@Atik
+
 **[Server Side Repo](https://github.com/sayedatiqurrahman/GlobalSpeakServer)**
 > https://github.com/sayedatiqurrahman/GlobalSpeakServer
 
